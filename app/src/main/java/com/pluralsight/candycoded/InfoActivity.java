@@ -46,10 +46,7 @@ public class InfoActivity extends AppCompatActivity {
         Uri telephponeUri = Uri.parse("tel:0123456789");
         Intent dialIntent = new Intent(Intent.ACTION_DIAL);
         dialIntent.setData(telephponeUri);
-        if (dialIntent.resolveActivity(getPackageManager())!=null){
-            startActivity(dialIntent);
-        }else{
-            Toast.makeText(this, "Cannot Start Phone/Dial Activity", Toast.LENGTH_SHORT).show();
-        }
+        startActivity(dialIntent);
+
     }
 }
