@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,9 +35,21 @@ public class InfoActivity extends AppCompatActivity {
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) !=null){
             startActivity(mapIntent);
+        }else{
+            Toast.makeText(this, "Cannot Start Map Activity", Toast.LENGTH_SHORT).show();
         }
     }
     // ***
     // TODO - Task 3 - Launch the Phone Activity
     // ***
+    public void createPhoneIntent(View view){
+        Uri telephponeUri = Uri.parse("tel:0123456789");
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+        dialIntent.setData(telephponeUri);
+        if (dialIntent.resolveActivity(getPackageManager())!=null){
+            startActivity(dialIntent);
+        }else{
+            Toast.makeText(this, "Cannot Start Phone/Dial Activity", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
